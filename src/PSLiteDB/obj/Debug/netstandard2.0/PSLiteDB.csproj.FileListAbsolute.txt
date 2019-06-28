@@ -34,3 +34,12 @@ C:\temp\Ps\PSLiteDB_fs\src\PSLiteDB\obj\Debug\netstandard2.0\PSLiteDB.AssemblyIn
 C:\temp\Ps\PSLiteDB_fs\src\PSLiteDB\obj\Debug\netstandard2.0\PSLiteDB.AssemblyInfo.cs
 C:\temp\Ps\PSLiteDB_fs\src\PSLiteDB\obj\Debug\netstandard2.0\PSLiteDB.dll
 C:\temp\Ps\PSLiteDB_fs\src\PSLiteDB\obj\Debug\netstandard2.0\PSLiteDB.pdb
+C:\temp\Ps\psliteorig\src\PSLiteDB\bin\Debug\netstandard2.0\PSLiteDB.deps.json
+C:\temp\Ps\psliteorig\src\PSLiteDB\bin\Debug\netstandard2.0\PSLiteDB.dll
+C:\temp\Ps\psliteorig\src\PSLiteDB\bin\Debug\netstandard2.0\PSLiteDB.pdb
+C:\temp\Ps\psliteorig\src\PSLiteDB\obj\Debug\netstandard2.0\PSLiteDB.csprojAssemblyReference.cache
+C:\temp\Ps\psliteorig\src\PSLiteDB\obj\Debug\netstandard2.0\PSLiteDB.csproj.CoreCompileInputs.cache
+C:\temp\Ps\psliteorig\src\PSLiteDB\obj\Debug\netstandard2.0\PSLiteDB.AssemblyInfoInputs.cache
+C:\temp\Ps\psliteorig\src\PSLiteDB\obj\Debug\netstandard2.0\PSLiteDB.AssemblyInfo.cs
+C:\temp\Ps\psliteorig\src\PSLiteDB\obj\Debug\netstandard2.0\PSLiteDB.dll
+C:\temp\Ps\psliteorig\src\PSLiteDB\obj\Debug\netstandard2.0\PSLiteDB.pdb

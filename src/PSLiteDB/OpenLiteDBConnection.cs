@@ -17,7 +17,7 @@ namespace PSLiteDB
             ParameterSetName = "Simple",
             Mandatory = false
             )]
-        public string Database { get; set; } = @"C:\temp\litedb\poc.db";
+        public string Database { get; set; }
 
         [Parameter(
             Position = 1,

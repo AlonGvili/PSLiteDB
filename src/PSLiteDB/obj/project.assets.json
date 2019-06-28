@@ -877,11 +877,11 @@
   "project": {
     "version": "0.1.0-alpha",
     "restore": {
-      "projectUniqueName": "C:\\temp\\Ps\\PSLiteDB_fs\\src\\PSLiteDB\\PSLiteDB.csproj",
+      "projectUniqueName": "C:\\temp\\Ps\\psliteorig\\src\\PSLiteDB\\PSLiteDB.csproj",
       "projectName": "PSLiteDB",
-      "projectPath": "C:\\temp\\Ps\\PSLiteDB_fs\\src\\PSLiteDB\\PSLiteDB.csproj",
+      "projectPath": "C:\\temp\\Ps\\psliteorig\\src\\PSLiteDB\\PSLiteDB.csproj",
       "packagesPath": "C:\\Users\\k2\\.nuget\\packages\\",
-      "outputPath": "C:\\temp\\Ps\\PSLiteDB_fs\\src\\PSLiteDB\\obj\\",
+      "outputPath": "C:\\temp\\Ps\\psliteorig\\src\\PSLiteDB\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
