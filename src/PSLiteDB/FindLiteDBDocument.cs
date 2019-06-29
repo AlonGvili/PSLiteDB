@@ -99,14 +99,13 @@ namespace PSLiteDB
                     {
                         if (As.ToLower() == "psobject")
                         {
-                            var Obj = BSONtoPSObjectConverter(results, Collection);
+                            var Obj = Helpers.MSJsonDateConverter.BSONtoPSObjectConverter(results, Collection);
+
                             WriteObject(Obj);
                         }
                         else
                         {
-                            //WriteObject(BsonMapper.Global.ToDocument(results));
-                            WriteObject(Connection.Mapper.ToDocument(results));
-                            
+                            WriteObject(Connection.Mapper.ToDocument(results));                          
                         }
 
                     }
@@ -125,8 +124,7 @@ namespace PSLiteDB
                         {
                             foreach (var r in results)
                             {
-
-                                var Obj = BSONtoPSObjectConverter(r, Collection);
+                                var Obj = Helpers.MSJsonDateConverter.BSONtoPSObjectConverter(r, Collection);
                                 WriteObject(Obj);
                             }
                         }
@@ -152,7 +150,7 @@ namespace PSLiteDB
                         {
                             foreach (var r in results)
                             {
-                                var Obj = BSONtoPSObjectConverter(r, Collection);
+                                var Obj = Helpers.MSJsonDateConverter.BSONtoPSObjectConverter(r, Collection);
                                 WriteObject(Obj);
                             }
                         }
@@ -160,7 +158,6 @@ namespace PSLiteDB
                         {
                             foreach (var r in results)
                             {
-                                //WriteObject(BsonMapper.Global.ToDocument(r));
                                 WriteObject(Connection.Mapper.ToDocument(r));
                             }
                               
@@ -169,90 +166,12 @@ namespace PSLiteDB
 
                 }
 
-
-
             }
             else
             {
                 WriteWarning($"Collection ['{Collection}'] does not exist in the database");
             }
 
-        }
-
-        public static PSObject BSONtoPSObjectConverter(BsonDocument bsonobj,string Collection)
-        {
-            PSObject Obj = new PSObject();
-            Obj.Properties.Add(new PSNoteProperty("Collection", Collection));
-
-            foreach (KeyValuePair<string, BsonValue> kvp in bsonobj)
-            {
-
-                if (kvp.Value.GetType() == typeof(BsonArray))
-                {
-                    var li = new List<string>();
-                    foreach (var item in kvp.Value.AsArray)
-                    {
-                        li.Add(item.AsString);
-                    }
-                    Obj.Properties.Add(new PSNoteProperty(kvp.Key, li));
-                }
-                else if (kvp.Value.GetType() == typeof(BsonValue))
-                {
-                    if (kvp.Key.ToLower().Contains("time") || kvp.Key.ToLower().Contains("date"))
-                    {
-                        if (kvp.Value.AsString.ToLower().Contains("date"))
-                        {
-                            // microsoft date format
-                            Obj.Properties.Add(new PSNoteProperty(kvp.Key, MSJsonDateConverter.Convert(kvp)));
-                        }
-                        else
-                        {
-                            //standard json iso date conversion
-                            Obj.Properties.Add(new PSNoteProperty(kvp.Key, MSJsonDateConverter.Convert(kvp)));
-                        }
-                        
-                    }
-                    else
-                    {
-                        Obj.Properties.Add(new PSNoteProperty(kvp.Key, kvp.Value.RawValue));
-                    }
-
-
-                }
-                else
-                {
-                    //Obj.Properties.Add(new PSNoteProperty(kvp.Key, kvp.Value.AsDocument));
-                    Obj.Properties.Add(new PSNoteProperty(kvp.Key, BSONtoPSObjectConverter(kvp.Value.AsDocument, Collection)));
-                }
-            }
-            return Obj;
-        }
-
-        class MSJsonDate
-        {
-            public string BsonKey { get; set; }
-            public string BsonDate { get; set; }
-        }
-
-        class MSJsonDateConverter
-        {
-            public string BsonKey { get; set; }
-            public DateTime BsonDate { get; set; }
-
-            public static DateTime Convert(KeyValuePair<string, BsonValue> kvp)
-            {
-                JsonSerializerSettings settings = new JsonSerializerSettings
-                {
-                    DateFormatHandling = DateFormatHandling.MicrosoftDateFormat,
-                    Formatting = Formatting.Indented
-                };
-
-                MSJsonDate Obj1 = new MSJsonDate { BsonKey = kvp.Key, BsonDate = kvp.Value.AsString };
-
-                string json = JsonConvert.SerializeObject(Obj1, settings);
-                var foo = JsonConvert.DeserializeObject<MSJsonDateConverter>(json, settings);
-                return foo.BsonDate;
-            }
         }
     }
 }
